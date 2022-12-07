@@ -1,7 +1,7 @@
 import { ethers, network } from "hardhat";
 
-const SRC_CONTRACT = "0x96C106F735197e1B5027711189AC2bCa01eA3d78"
-const RECEIVERS = [{ chainId: 5, address: "0xd2221Be425107B98bac0e0488a527640dC185D17" }, { chainId: 80001, address: "0x72E06B75b78A5E3652D2524fF1602ecb5427e19e" }, { chainId: 1287, address: "0x021f80ef75D1A3DE000a78C12124EDB24E6707c7" }]
+const SRC_CONTRACT = "0xAEb90fCD11B8d917699e40F5aFA239623376e362"
+const RECEIVERS = [{ chainId: 420, address: "0xAEb90fCD11B8d917699e40F5aFA239623376e362" }, { chainId: 1287, address: "0x65E7F203dF46cFcD33904F012FfFdd1Ea63bA0A5" }]
 
 async function main() {
   const router = await ethers.getContractAt("CrossChainRouter", SRC_CONTRACT);

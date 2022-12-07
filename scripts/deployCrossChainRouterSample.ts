@@ -1,5 +1,5 @@
 import { ethers, network } from "hardhat";
-const TRUSTED_FORWARDER_GOERLI = "0xE041608922d06a4F26C0d4c27d8bCD01daf1f792";
+import DEPLOYMENTS from "../constants/deployments.json"
 
 async function main() {
   // deploy Bridge Contract
@@ -11,11 +11,8 @@ async function main() {
     throw new Error("chainId invalid");
   }
 
-  // Goerli
-  // const crossChainRouter = await CrossChainRouter.deploy("0x681b9C7155244b40F1b70CC65596d1C09e6feA3d");
-
-  // Mumbai
-  const crossChainRouter = await CrossChainRouter.deploy("0x830075B5b6BF18d1d94E0e1629301dfb932F7778");
+  const contractAddress = DEPLOYMENTS[network.name as keyof typeof DEPLOYMENTS]
+  const crossChainRouter = await CrossChainRouter.deploy(contractAddress);
 
 
   await crossChainRouter.deployed();

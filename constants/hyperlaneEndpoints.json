@@ -1,0 +1,11 @@
+{
+  "outbox": {
+    "optimism-goerli": "0x54148470292C24345fb828B003461a9444414517",
+    "moonbase": "0x54148470292C24345fb828B003461a9444414517"
+  },
+  "inbox": {},
+  "gas-paymaster": {
+    "optimism-goerli": "0xeb6f11189197223c656807a83B0DD374f9A6dF44",
+    "moonbase": "0xeb6f11189197223c656807a83B0DD374f9A6dF44"
+  }
+}

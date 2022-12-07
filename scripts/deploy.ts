@@ -1,11 +1,9 @@
 import { ethers, network } from "hardhat";
 import { getAddresses } from "../utils/const";
-const TRUSTED_FORWARDER_GOERLI = "0xE041608922d06a4F26C0d4c27d8bCD01daf1f792";
 
 async function main() {
-  // deploy Bridge Contract
-  const [owner] = await ethers.getSigners()
-  const NFTBridge = await ethers.getContractFactory("NFTBridge");
+  // deploy Cross Chain Router Contract
+  const CrossChainRouter = await ethers.getContractFactory("CrossChainRouter");
 
   const chainId = network.config.chainId;
 
@@ -13,20 +11,12 @@ async function main() {
     throw new Error("chainId invalid");
   }
 
-  const [router, inbox, domain] = getAddresses(chainId)
+  const [outbox, payMaster, connext, lz] = getAddresses(network.name)
 
-  const nftBridge = await NFTBridge.deploy(router, domain, TRUSTED_FORWARDER_GOERLI);
+  const crossChainRouter = await CrossChainRouter.deploy(connext, outbox, payMaster, lz)
 
-  await nftBridge.deployed();
-  console.log(`NFTBridge deployed to ${nftBridge.address}`);
-
-  // deploy SampleNFT
-  if (chainId !== 5) {
-    const SampleNFT = await ethers.getContractFactory("SampleNFT");
-    const sampleNFT = await SampleNFT.deploy("0x96B8a6B425661De7daD9f114e32DC77628FB3882")
-    await sampleNFT.deployed();
-    console.log(`deploy NFT: ${sampleNFT.address}`);
-  }
+  await crossChainRouter.deployed();
+  console.log(`CrossChainRouter deployed to ${crossChainRouter.address}`)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

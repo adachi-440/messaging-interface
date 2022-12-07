@@ -1,3 +1,8 @@
+import HYPERLANE from "../constants/hyperlaneEndpoints.json"
+import CONNEXT from "../constants/connextEndpoints.json"
+import LAYERZERO from "../constants/lzEndpoints.json"
+
+
 export const OUTBOX_GOERLI = "0xDDcFEcF17586D08A5740B7D91735fcCE3dfe3eeD"
 export const OUTBOX_MUMBAI = "0xe17c37212d785760E8331D4A4395B17b34Ba8cDF"
 export const OUTBOX_MOONBASE = "0x54148470292C24345fb828B003461a9444414517"
@@ -17,14 +22,13 @@ export const DOMAIN_MUMBAI = 80001
 export const DOMAIN_MOONBASE = "0x6d6f2d61"
 const NONE_ADDRESS = "0x0000000000000000000000000000000000000000"
 
-export const getAddresses = (chainId: number): [string, string, number | string] => {
-  if (chainId === 5) {
-    return [CROSS_CHAIN_ROUTER_GOERRI, INBOX_GOERLI, DOMAIN_GOERLI]
-  } else if (chainId === 80001) {
-    return [CROSS_CHAIN_ROUTER_MUMBAI, INBOX_MUMBAI, DOMAIN_MUMBAI]
-  } else {
-    return [CROSS_CHAIN_ROUTER_GOERRI, INBOX_MOONBASE, DOMAIN_MOONBASE]
-  }
+export const getAddresses = (networkName: string): [string, string, string, string] => {
+  const outbox = HYPERLANE.outbox[networkName as keyof typeof HYPERLANE.outbox] ?? NONE_ADDRESS
+  const payMaster = HYPERLANE["gas-paymaster"][networkName as keyof typeof HYPERLANE["gas-paymaster"]] ?? NONE_ADDRESS
+  const connext = CONNEXT[networkName as keyof typeof CONNEXT] ?? NONE_ADDRESS
+  const lz = LAYERZERO[networkName as keyof typeof LAYERZERO] ?? NONE_ADDRESS
+
+  return [outbox, payMaster, connext, lz]
 }
 
 // address _connext, address _outbox, address _gasPaymaster

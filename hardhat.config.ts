@@ -1,7 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import * as dotenv from 'dotenv';
-import "./tasks/mapContract"
+import "./tasks/index";
 
 dotenv.config();
 const accounts =
@@ -24,6 +24,11 @@ const config: HardhatUserConfig = {
     moonbase: {
       chainId: 1287,
       url: `https://moonbase-alpha.blastapi.io/${process.env.MOONBASE_API_KEY}`,
+      accounts
+    },
+    "optimism-goerli": {
+      chainId: 420,
+      url: `https://opt-goerli.g.alchemy.com/v2/${process.env.OPTIMISM_GOERLI_API_KEY}`,
       accounts
     }
   },
