@@ -1,11 +1,15 @@
 {
   "outbox": {
     "optimism-goerli": "0x54148470292C24345fb828B003461a9444414517",
-    "moonbase": "0x54148470292C24345fb828B003461a9444414517"
+    "moonbase": "0x54148470292C24345fb828B003461a9444414517",
+    "arbitrum-goerli": "0x2b2a158B4059C840c7aC67399B153bb567D06303",
+    "mumbai": "0xe17c37212d785760E8331D4A4395B17b34Ba8cDF"
   },
   "inbox": {},
   "gas-paymaster": {
     "optimism-goerli": "0xeb6f11189197223c656807a83B0DD374f9A6dF44",
-    "moonbase": "0xeb6f11189197223c656807a83B0DD374f9A6dF44"
+    "moonbase": "0xeb6f11189197223c656807a83B0DD374f9A6dF44",
+    "arbitrum-goerli": "0x679Dc08cC3A4acFeea2f7CAFAa37561aE0b41Ce7",
+    "mumbai": "0x9A27744C249A11f68B3B56f09D280599585DFBb8"
   }
 }
