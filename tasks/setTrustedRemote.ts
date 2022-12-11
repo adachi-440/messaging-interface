@@ -27,16 +27,17 @@ task(
     let crossChainRouter = await hre.ethers.getContractAt("CrossChainRouter", localContractAddress);
 
     try {
-      let tx = await (await crossChainRouter.setTrustedRemote(remoteChainId, remoteAndLocal)).wait()
+      let tx = await (await crossChainRouter.setTrustedRemote(remoteChainId, remoteAndLocal, { gasLimit: 2000000 })).wait()
       console.log(`✅ [${hre.network.name}] setTrustedRemote(${remoteChainId}, ${remoteAndLocal})`)
       console.log(` tx: ${tx.transactionHash}`)
 
-      const result = await crossChainRouter.getTrustedRemoteAddress(1287)
+      const result = await crossChainRouter.gasReceiver()
       console.log(result)
     } catch (e: any) {
       if (e.error.message.includes("The chainId + address is already trusted")) {
         console.log("*source already set*")
       } else {
+        console.log(e)
         console.log(`❌ [${hre.network.name}] setTrustedRemote(${remoteChainId}, ${remoteAndLocal})`)
       }
     }

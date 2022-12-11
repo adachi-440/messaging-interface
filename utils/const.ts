@@ -1,7 +1,7 @@
 import HYPERLANE from "../constants/hyperlaneEndpoints.json"
 import CONNEXT from "../constants/connextEndpoints.json"
 import LAYERZERO from "../constants/lzEndpoints.json"
-
+import AXELAR from "../constants/axelarEndpoints.json"
 
 export const OUTBOX_GOERLI = "0xDDcFEcF17586D08A5740B7D91735fcCE3dfe3eeD"
 export const OUTBOX_MUMBAI = "0xe17c37212d785760E8331D4A4395B17b34Ba8cDF"
@@ -22,13 +22,15 @@ export const DOMAIN_MUMBAI = 80001
 export const DOMAIN_MOONBASE = "0x6d6f2d61"
 const NONE_ADDRESS = "0x0000000000000000000000000000000000000000"
 
-export const getAddresses = (networkName: string): [string, string, string, string] => {
+export const getAddresses = (networkName: string): [string, string, string, string, string, string] => {
   const outbox = HYPERLANE.outbox[networkName as keyof typeof HYPERLANE.outbox] ?? NONE_ADDRESS
   const payMaster = HYPERLANE["gas-paymaster"][networkName as keyof typeof HYPERLANE["gas-paymaster"]] ?? NONE_ADDRESS
   const connext = CONNEXT[networkName as keyof typeof CONNEXT] ?? NONE_ADDRESS
   const lz = LAYERZERO[networkName as keyof typeof LAYERZERO] ?? NONE_ADDRESS
+  const gateway = AXELAR.gateway[networkName as keyof typeof AXELAR.gateway] ?? NONE_ADDRESS
+  const gasReceiver = AXELAR["gas-service"][networkName as keyof typeof AXELAR["gas-service"]] ?? NONE_ADDRESS
 
-  return [outbox, payMaster, connext, lz]
+  return [outbox, payMaster, connext, lz, gateway, gasReceiver]
 }
 
 // address _connext, address _outbox, address _gasPaymaster

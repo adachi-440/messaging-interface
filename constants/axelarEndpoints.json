@@ -1,10 +1,14 @@
 {
   "gateway": {
+    "optimism-goerli": "0xe432150cce91c13a887f7D836923d5597adD8E31",
     "arbitrum-goerli": "0xe432150cce91c13a887f7D836923d5597adD8E31",
-    "moonbase": "0x5769D84DD62a6fD969856c75c7D321b84d455929"
+    "moonbase": "0x5769D84DD62a6fD969856c75c7D321b84d455929",
+    "mumbai": "0xBF62ef1486468a6bd26Dd669C06db43dEd5B849B"
   },
   "gas-service": {
+    "optimism-goerli": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6",
     "arbitrum-goerli": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6",
-    "moonbase": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"
+    "moonbase": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6",
+    "mumbai": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"
   }
 }

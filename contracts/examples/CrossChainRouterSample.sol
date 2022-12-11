@@ -25,7 +25,7 @@ contract CrossChainRouterSample is IReceiver {
         address user
     ) public payable {
         bytes memory callData = abi.encode("Hello World");
-        ICrossChainRouter(router).sendMessage(
+        ICrossChainRouter(router).sendMessage{value: msg.value}(
             protocolId,
             dstChainId,
             relayerFee,

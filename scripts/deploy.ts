@@ -11,9 +11,9 @@ async function main() {
     throw new Error("chainId invalid");
   }
 
-  const [outbox, payMaster, connext, lz] = getAddresses(network.name)
+  const [outbox, payMaster, connext, lz, gateway, gasReceiver] = getAddresses(network.name)
 
-  const crossChainRouter = await CrossChainRouter.deploy(connext, outbox, payMaster, lz)
+  const crossChainRouter = await CrossChainRouter.deploy(connext, outbox, payMaster, lz, gateway, gasReceiver, { gasLimit: 10000000 })
 
   await crossChainRouter.deployed();
   console.log(`CrossChainRouter deployed to ${crossChainRouter.address}`)
