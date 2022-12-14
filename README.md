@@ -32,7 +32,7 @@ function sendMessage(
         uint256 relayerFee,
         address user,
         bytes memory callData
-    ) external payable;
+) external payable;
 
 ```
 
@@ -54,8 +54,12 @@ function sendMessage(
 ### Receive
 
 ```Solidity
-function receiveMessage(bytes32 messageId, uint32 originChainId, address originSender, bytes memory callData) external;
-}
+function receiveMessage(
+        bytes32 messageId,
+        uint32 originChainId,
+        address originSender,
+        bytes memory callData
+) external;
 ```
 
 `messageId` is a unique id.
